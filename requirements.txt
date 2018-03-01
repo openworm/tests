@@ -1,5 +1,1 @@
-sciunit
--e git+https://github.com/scidash/neuronunit#egg=neuronunit
-django
-django-formtools
--e git+https://github.com/openworm/ChannelWorm#egg=channelworm
+-e .

@@ -25,13 +25,21 @@ setup(
     description='Data-driven validation tests for the models that compose OpenWorm.',
     long_description="",  
     test_suite="owtests.unit_test",    
-    install_requires=read_requirements(),
+    install_requires=['sciunit>=0.19',
+                      'neuronunit>=0.19'],
+    extras_require = {
+        'channels':  ['django', 
+                      'django-formtools',
+                      'channelworm'],
+        'cells': ['CElegansNeuroML'],
+        },
     entry_points={
         'console_scripts': [
             'owtests = owtests.__main__:main'
             ]
-        }
+        },
+    dependency_links = ["git+https://github.com/scidash/sciunit#egg=sciunit-0.1.9",
+                        "git+https://github.com/scidash/neuronunit#egg=neuronunit-0.1.9",
+                        "git+https://github.com/openworm/CElegansNeuroML@sciunit#egg=CElegansNeuroML"]
     )
-
-
 
