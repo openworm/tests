@@ -38,8 +38,8 @@ setup(
             'owtests = owtests.__main__:main'
             ]
         },
-    dependency_links = ["git+https://github.com/scidash/sciunit#egg=sciunit-0.19",
-                        "git+https://github.com/scidash/neuronunit#egg=neuronunit-0.19",
+    dependency_links = ["git+https://github.com/scidash/sciunit@dev#egg=sciunit-0.19",
+                        "git+https://github.com/scidash/neuronunit@dev#egg=neuronunit-0.19",
                         "git+https://github.com/openworm/CElegansNeuroML@sciunit#egg=CElegansNeuroML"]
     )
 
