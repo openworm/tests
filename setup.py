@@ -30,7 +30,7 @@ setup(
     extras_require = {
         'channels':  ['django', 
                       'django-formtools',
-                      'channelworm'],
+                      'channelworm>=0.1'],
         'cells': ['CElegansNeuroML>=0.4'],
         },
     entry_points={
@@ -40,6 +40,7 @@ setup(
         },
     dependency_links = ["git+https://github.com/scidash/sciunit@dev#egg=sciunit-0.19",
                         "git+https://github.com/scidash/neuronunit@dev#egg=neuronunit-0.19",
+                        "git+https://github.com/openworm/ChannelWorm@master#egg=channelworm-0.1",
                         "git+https://github.com/openworm/CElegansNeuroML@sciunit#egg=CElegansNeuroML-0.4"]
     )
 
