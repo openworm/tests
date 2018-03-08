@@ -23,7 +23,7 @@ pip install -e . --process-dependency-links # Install as a developer
 cd $OPENWORM_HOME
 git clone http://github.com/openworm/tests
 cd tests
-pip install -e . --process-dependency-links`
+pip install -e . --process-dependency-links
 ```
 
 - Launch and run any of the notebooks (`owtests/\*.ipynb`), or run:
