@@ -2,7 +2,7 @@
 
 This repository represents a collection of SciUnit tests for various subprojects of OpenWorm.   
 
-## Instructions:
+## Conventional Instructions:
 - Set an environment variable for your openworm repositories. e.g. 
 ```
 export OPENWORM_HOME=/path/to/openworm
@@ -33,7 +33,14 @@ python -m unittest owtests
 ``` 
 to run all of them in batch from the command line.  
 
+## Docker instructions
+We provide a Docker container for the same installation:
+```
+git clone http://github.com/openworm/tests
+docker build -t openworm/owtests tests # Will build the container and run all the tests
+docker run -it openworm/owtests # To explore test artifacts from the shell
+```
+
 ## To Do:
 - Add a lot more tests
 - Allow tests to be run and output to be logged using SciUnit command line tools, e.g. `sciunit run`.  
-- Create a Docker image to run all of these without configuration steps above.  
