@@ -10,7 +10,7 @@ RUN mkdir openworm
 ENV OPENWORM_HOME /home/jovyan/work/openworm
 
 WORKDIR $OPENWORM_HOME
-RUN wget http://github.com/openworm/ChannelWorm/tarball/dev -O out.tar.gz
+RUN wget http://github.com/openworm/ChannelWorm/tarball/sciunit -O out.tar.gz
 RUN mkdir ChannelWorm
 RUN tar -xvzf out.tar.gz --strip-components=1 -C ChannelWorm
 WORKDIR ChannelWorm
