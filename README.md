@@ -33,7 +33,7 @@ python -m unittest owtests
 ``` 
 to run all of them in batch from the command line.  
 
-## Docker instructions
+## Docker instructions:
 We provide a Docker container for the same installation:
 ```
 git clone http://github.com/openworm/tests
