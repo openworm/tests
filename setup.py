@@ -28,9 +28,7 @@ setup(
     install_requires=['sciunit>=0.19',
                       'neuronunit>=0.19'],
     extras_require = {
-        'channels':  ['django', 
-                      'django-formtools',
-                      'channelworm>=0.1'],
+        'channels':  ['channelworm>=0.1'],
         'cells': ['CElegansNeuroML>=0.4'],
         },
     entry_points={
