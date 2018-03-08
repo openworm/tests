@@ -38,7 +38,11 @@ We provide a Docker container for the same installation:
 ```
 git clone http://github.com/openworm/tests
 docker build -t openworm/owtests tests # Will build the container and run all the tests
+
 docker run -it openworm/owtests # To explore test artifacts from the shell
+#or
+chmod 744 docker-interact
+./docker-interact owtests # To explore test notebooks from the browser
 ```
 
 ## To Do:
