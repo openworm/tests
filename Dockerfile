@@ -4,6 +4,7 @@ USER root
 RUN apt-get update
 RUN apt-get install -y default-jre
 USER jovyan
+
 WORKDIR /home/jovyan/work
 
 RUN mkdir mount
@@ -32,11 +33,4 @@ RUN pip install -e . --process-dependency-links
 #RUN pip install -e .[channels,cells] --process-dependency-links
 
 RUN python -m unittest -b owtests
-#WORKDIR /home/jovyan/neuronunit
-#WORKDIR /home/jovyan
 
-#RUN git clone -b dev https://github.com/russelljjarvis/neuronunit.git
-#WORKDIR neuronunit
-#RUN pip install -e . --process-dependency-links
-#RUN pip install -e neuronunit git+https://github.com/russelljjarvis/neuronunit@dev
-#ENTRYPOINT /bin/bash
