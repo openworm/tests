@@ -3,7 +3,7 @@
 This repository represents a collection of SciUnit tests for various subprojects of OpenWorm.   
 
 ## Conventional Instructions:
-- Set an environment variable for your openworm repositories. e.g. 
+- Set an environment variable for the root path of all of your openworm repositories.  For example, you keep the ChannelWorm repository at `/path/to/openworm/ChannelWorm`, then you would set: 
 ```
 export OPENWORM_HOME=/path/to/openworm
 ```
