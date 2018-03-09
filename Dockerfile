@@ -4,8 +4,9 @@ USER root
 RUN apt-get update
 RUN apt-get install -y default-jre
 USER jovyan
-
 WORKDIR /home/jovyan/work
+
+RUN mkdir mount
 RUN mkdir openworm
 ENV OPENWORM_HOME /home/jovyan/work/openworm
 
@@ -27,7 +28,15 @@ WORKDIR $OPENWORM_HOME
 RUN git clone http://github.com/openworm/tests
 WORKDIR tests
 RUN pip install -e . --process-dependency-links
+
 #RUN pip install -e .[channels,cells] --process-dependency-links
 
 RUN python -m unittest -b owtests
-ENTRYPOINT /bin/bash
+#WORKDIR /home/jovyan/neuronunit
+#WORKDIR /home/jovyan
+
+#RUN git clone -b dev https://github.com/russelljjarvis/neuronunit.git
+#WORKDIR neuronunit
+#RUN pip install -e . --process-dependency-links
+#RUN pip install -e neuronunit git+https://github.com/russelljjarvis/neuronunit@dev
+#ENTRYPOINT /bin/bash
