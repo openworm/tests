@@ -2,28 +2,49 @@
 
 This repository represents a collection of SciUnit tests for various subprojects of OpenWorm.   
 
-## Instructions:
-- Set an environment variable for your openworm repositories. e.g. 
+## Conventional Instructions:
+- Set an environment variable for the root path of all of your openworm repositories.  For example, you keep the ChannelWorm repository at `/path/to/openworm/ChannelWorm`, then you would set: 
+```
+export OPENWORM_HOME=/path/to/openworm
+```
 
-`export OPENWORM_HOME=/path/to/openworm`
-- You should have at least one other open worm repository in this location e.g. 
+- For each Open Worm subproject repository you wish to test (e.g. ChannelWorm, CElegansNeuroML):
+```
+cd $OPENWORM_HOME
+git clone http://github.com/openworm/REPO_NAME # Replace REPO_NAME with e.g. ChannelWorm
+cd REPO_NAME # Ditto
+git pull # Retrieve all branches (in any recent version of the git client)
+git checkout sciunit # Switch to the sciunit branch of the repo (which will contain updates for testing)
+pip install -e . --process-dependency-links # Install as a developer
+```
 
-`$OPENWORM_HOME/ChannelWorm`, `$OPENWORM_HOME/CElegansNeuroML`, etc.  
-- Install each of those repositories, e.g. 
+- Clone and install this repository: 
+```
+cd $OPENWORM_HOME
+git clone http://github.com/openworm/tests
+cd tests
+pip install -e . --process-dependency-links
+```
 
-`cd $OPENWORM_HOME/ChannelWorm; pip install -e .`
-- Clone this repository: 
+- Launch and run any of the notebooks (`owtests/\*.ipynb`), or run:
+```
+cd $OPENWORM_HOME
+python -m unittest owtests
+``` 
+to run all of them in batch from the command line.  
 
-`cd $OPENWORM_HOME; git clone http://github.com/openworm/tests; cd tests`
-- Install it as a developer: 
+## Docker instructions:
+We provide a Docker container for the same installation:
+```
+git clone http://github.com/openworm/tests
+docker build -t openworm/owtests tests # Will build the container and run all the tests
 
-`pip install -e . --process-dependency-links`
-- Make sure you have the requirements for any part of the project you want to test by installing extras, e.g. 
-
-`pip install -e .[channels,cells] --process-dependency-links`
-- Launch and run any of the notebooks (owtests/\*.ipynb), or run `python -m unittest owtests` to run all of them in batch from the command line.  
+docker run -it openworm/owtests # To explore test artifacts from the shell
+#or
+chmod 744 docker-interact
+./docker-interact owtests # To explore test notebooks from the browser
+```
 
 ## To Do:
 - Add a lot more tests
 - Allow tests to be run and output to be logged using SciUnit command line tools, e.g. `sciunit run`.  
-- Create a Docker image to run all of these without configuration steps above.  

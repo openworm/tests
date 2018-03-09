@@ -1,21 +1,33 @@
 FROM jupyter/scipy-notebook
-RUN git clone https://github.com/openworm/ChannelWorm.git
-WORKDIR ChannelWorm 
-RUN pip install . 
-WORKDIR $HOME
-RUN pip install git+https://github.com/OpenSourceBrain/osb-model-validation
-RUN pip install git+https://github.com/openworm/CElegansNeuroML@sciunit
-RUN git clone -b sciunit https://github.com/openworm/CElegansNeuroML.git
-WORKDIR CElegansNeuroML
-RUN python setup.py install
-ENV OPENWORM_HOME pwd
-# over looked
-ENV OW_HOME pwd
-# over looked
-RUN pip install quantities sciunit django
-WORKDIR $HOME 
-RUN git clone http://github.com/openworm/tests.git
-WORKDIR tests 
-RUN pip install -e . --process-dependency-links
-WORKDIR $HOME
 
+USER root
+RUN apt-get update
+RUN apt-get install -y default-jre
+USER jovyan
+
+WORKDIR /home/jovyan/work
+RUN mkdir openworm
+ENV OPENWORM_HOME /home/jovyan/work/openworm
+
+WORKDIR $OPENWORM_HOME
+RUN wget http://github.com/openworm/ChannelWorm/tarball/sciunit -O out.tar.gz
+RUN mkdir ChannelWorm
+RUN tar -xvzf out.tar.gz --strip-components=1 -C ChannelWorm
+WORKDIR ChannelWorm
+RUN pip install -e . --process-dependency-links
+
+WORKDIR $OPENWORM_HOME
+RUN wget http://github.com/openworm/CElegansNeuroML/tarball/sciunit -O out.tar.gz
+RUN mkdir CElegansNeuroML
+RUN tar -xvzf out.tar.gz --strip-components=1 -C CElegansNeuroML
+WORKDIR CElegansNeuroML
+RUN pip install -e . --process-dependency-links
+RUN pip install quantities sciunit django
+WORKDIR $OPENWORM_HOME
+RUN git clone http://github.com/openworm/tests
+WORKDIR tests
+RUN pip install -e . --process-dependency-links
+#RUN pip install -e .[channels,cells] --process-dependency-links
+
+RUN python -m unittest -b owtests
+ENTRYPOINT /bin/bash
