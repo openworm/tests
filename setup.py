@@ -1,23 +1,15 @@
 """Setup file for openworm-tests"""
 import sys
 from setuptools import setup
-"""
-pip interal functions are no longer accessible as of pip 10
-
-from pip._internal.req import parse_requirements
-from pip._internal.download import PipSession
-"""
-
 import os
 
-"""
 def read_requirements():
     '''parses requirements from requirements.txt'''
     reqs_path = os.path.join('.', 'requirements.txt')
-    install_reqs = parse_requirements(reqs_path, session=PipSession())
-    reqs = [str(ir.req) for ir in install_reqs]
-    return reqs
-"""
+    reqs = open(reqs_path, 'r')
+    reqlist = [line.rstrip() for line in reqs]
+    reqs.close()
+    return reqlist
 
 setup(
     name='owtests',
@@ -42,7 +34,7 @@ setup(
             ]
         },
 """
-Temporarily created versions on my fork which have the dependencies specified explicitly   
+Temporarily created versions on my fork which have the dependencies specified explicitly
 """
 
     dependency_links = ["git+https://github.com/gsarma/sciunit@pip10_workaround#egg=sciunit-0.19",
