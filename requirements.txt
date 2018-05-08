@@ -1,3 +1,3 @@
-git+http://github.com/scidash/sciunit.git@dev#egg=sciunit
-git+http://github.com/openworm/ChannelWorm@master#egg=channelworm-0.1
-git+http://github.com/openworm/CElegansNeuroML@sciunit#egg=CElegansNeuroML-0.4
+git+https://github.com/scidash/sciunit.git@dev#egg=sciunit-0.19.1
+git+https://github.com/openworm/ChannelWorm@sciunit#egg=channelworm-0.1
+git+https://github.com/openworm/CElegansNeuroML@sciunit#egg=CElegansNeuroML-0.4
