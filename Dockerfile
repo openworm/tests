@@ -17,6 +17,14 @@ RUN tar -xvzf out.tar.gz --strip-components=1 -C sciunit
 WORKDIR sciunit
 RUN pip install -e . --process-dependency-links
 
+# NeuronUnit
+WORKDIR $OPENWORM_HOME
+RUN wget http://github.com/scidash/neuronunit/tarball/dev -O out.tar.gz
+RUN mkdir neuronunit
+RUN tar -xvzf out.tar.gz --strip-components=1 -C neuronunit
+WORKDIR neuronunit
+RUN pip install -e . --process-dependency-links
+
 # ChannelWorm
 WORKDIR $OPENWORM_HOME
 RUN wget http://github.com/openworm/ChannelWorm/tarball/sciunit -O out.tar.gz
@@ -50,16 +58,39 @@ WORKDIR example_data
 #RUN wget "https://drive.google.com/uc?export=download&id=0B7to9gBdZEyGX2tFQ1JyRzdUYUE" -O example_video_feature_file.mat
 #RUN wget "https://drive.google.com/uc?export=download&id=0B7to9gBdZEyGakg5U3loVUktRm8" -O example_video_norm_worm.mat
 
+# cache bust
+RUN ls 
+
+# wcon
+WORKDIR $OPENWORM_HOME
+RUN wget http://github.com/rgerkin/tracker-commons/tarball/master -O out.tar.gz
+RUN mkdir tracker-commons
+RUN tar -xvzf out.tar.gz --strip-components=1 -C tracker-commons
+WORKDIR tracker-commons/src/Python
+RUN pip install -e . --process-dependency-links
+
+RUN pip install -U nbconvert IPython
+
 # This tests package
 WORKDIR $OPENWORM_HOME
+#VOLUME $OPENWORM_HOME/tests
 #RUN git clone http://github.com/openworm/tests
 WORKDIR tests
-ADD . .
+COPY --chown=jovyan:users . $OPENWORM_HOME/tests
 USER root
-RUN chown -R jovyan .
+RUN chown jovyan:users $OPENWORM_HOME/tests
 USER jovyan
+#USER root
+#RUN chown -R jovyan .
+#USER jovyan
 RUN pip install -e . --process-dependency-links
 #RUN pip install -e .[channels,cells] --process-dependency-links
 
-RUN python -m unittest -b owtests
-ENTRYPOINT /bin/bash
+
+#RUN python -m unittest -b owtests
+
+#ENTRYPOINT /bin/bash
+#WORKDIR $HOME/work
+ENTRYPOINT start-notebook.sh --NotebookApp.token=''
+
+RUN cp $OPENWORM_HOME/tracker-commons/wcon_schema.json $OPENWORM_HOME/tracker-commons/src/Python/wcon/wcon_schema.json

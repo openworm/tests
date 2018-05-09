@@ -11,12 +11,15 @@ that contains any OpenWorm repositories that you want to test.
 
 import os
 import unittest
+import warnings
 
 import matplotlib as mpl
 
 from sciunit.utils import NotebookTools
 
-mpl.use('Agg')
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore")
+    mpl.use('Agg')
 DEFAULT_OW_HOME = os.path.join(os.environ.get('HOME'),'openworm')
 OW_HOME = os.environ.get('OPENWORM_HOME',DEFAULT_OW_HOME)
 if not os.path.isdir(OW_HOME):
