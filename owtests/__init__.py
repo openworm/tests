@@ -23,71 +23,61 @@ CW_HOME = os.path.join(OW_HOME,'ChannelWorm')
 class ChannelNotebooks(NotebookTools,unittest.TestCase):
     """Unit tests for documentation notebooks"""
 
-    """
-    If the path is the same for all tests in a class, use
-    the variable path.  Otherwise, the two argument form of
-    do_notebook accepts the path relative to owtests as the
-    first argument and the notebook name as the second.
-    """
-    path = ''
+    path = 'ChannelWorm'
 
-    # This can probably be removed, but I wanted Rick to look at the changes first
-    def test_egl19_iv(self):
-        self.do_notebook(['ChannelWorm','EGL-19_IV'])
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
+    # @unittest.skip("")
+    # This is the original EGL-19 test that the others are based on
     def test_egl19a_iv(self):
-        self.do_notebook(['ChannelWorm/EGL-19a_CAEEL','EGL-19a_CAEEL'])
+        self.do_notebook('EGL-19a_CAEEL/EGL-19a_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_egl2_CAEEL(self):
-        self.do_notebook(['ChannelWorm/EGL-2_CAEEL','EGL-2_CAEEL'])
+        self.do_notebook('EGL-2_CAEEL/EGL-2_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_egl36_CAEEL(self):
-        self.do_notebook(['ChannelWorm/EGL-36_CAEEL','EGL-36_CAEEL'])
+        self.do_notebook('EGL-36_CAEEL/EGL-36_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_exp2_CAEEL(self):
-        self.do_notebook(['ChannelWorm/EXP-2_CAEEL','EXP-2_CAEEL'])
+        self.do_notebook('EXP-2_CAEEL/EXP-2_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_kqt1_CAEEL(self):
-        self.do_notebook(['ChannelWorm/kqt-1_CAEEL','kqt-1_CAEEL'])
+        self.do_notebook('kqt-1_CAEEL/kqt-1_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_kqt3_CAEEL(self):
-        self.do_notebook(['ChannelWorm/kqt-3_CAEEL','kqt-3_CAEEL'])
+        self.do_notebook('kqt-3_CAEEL/kqt-3_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_shk1a_CAEEL(self):
-        self.do_notebook(['ChannelWorm/SHK-1a_CAEEL','SHK-1a_CAEEL'])
+        self.do_notebook('SHK-1a_CAEEL/SHK-1a_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_shl1_CAEEL(self):
-        self.do_notebook(['ChannelWorm/SHL-1_CAEEL','SHL-1_CAEEL'])
+        self.do_notebook('SHL-1_CAEEL/SHL-1_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_slo1a_CAEEL(self):
-        self.do_notebook(['ChannelWorm/SLO-1a_CAEEL','SLO-1a_CAEEL'])
+        self.do_notebook('SLO-1a_CAEEL/SLO-1a_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_slo2b_CAEEL(self):
-        self.do_notebook(['ChannelWorm/SLO-2b_CAEEL','SLO-2b_CAEEL'])
+        self.do_notebook('SLO-2b_CAEEL/SLO-2b_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_slo2c_CAEEL(self):
-        self.do_notebook(['ChannelWorm/SLO-2c_CAEEL','SLO-2c_CAEEL'])
+        self.do_notebook('SLO-2c_CAEEL/SLO-2c_CAEEL')
 
     @unittest.skip("These are dummy tests.  Need to be filed out later")
     def test_twk18_CAEEL(self):
-        self.do_notebook(['ChannelWorm/TWK18_CAEEL','TWK18_CAEEL'])
+        self.do_notebook('TWK18_CAEEL/TWK18_CAEEL')
 
 class CellNotebooks(NotebookTools,unittest.TestCase):
     """Unit tests for documentation notebooks"""
 
-    # Path to testing notebooks.  Use if all notebooks in this class
-    # share a path
+    # Path to testing notebooks
     path = 'CElegansNeuroML'
 
     # @unittest.skip("for development purposes")
