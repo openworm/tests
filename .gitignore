@@ -5,3 +5,6 @@ __pycache__
 *.pdf
 *.egg-info/
 *.egg
+*.pyc
+owtests/ChannelWorm/GeneratedFiles/*.py
+owtests/CElegansNeuroML/GeneratedFiles/*.py
