@@ -5,7 +5,7 @@ For normal users:
   pip install .
 For developers:
   pip install -e . --process-dependency-links
-Set an environment variable OW_HOME to the location of the directory 
+Set an environment variable OW_HOME to the location of the directory
 that contains any OpenWorm repositories that you want to test.
 """
 
@@ -20,20 +20,26 @@ if not os.path.isdir(OW_HOME):
     raise FileNotFoundError(msg)
 CW_HOME = os.path.join(OW_HOME,'ChannelWorm')
 
+channels = open(os.path.join(OW_HOME,'tests/owtests/ChannelWorm/ion_channel_list.txt')).read().split()
+
 class ChannelNotebooks(NotebookTools,unittest.TestCase):
     """Unit tests for documentation notebooks"""
+    longMessage = True
+    path = 'ChannelWorm' # Path to notebooks to be tested
 
-    path = '.' # Path to notebooks to be tested
+def make_test_function(channel_name):
+    def test(self):
+        self.do_notebook(channel_name+'/'+channel_name)
+    return test
 
-    def test_egl19_iv(self):
-        self.do_notebook('EGL-19_IV')
+for name in channels:
+    test_func = make_test_function(name)
+    setattr(ChannelNotebooks, 'test_{0}'.format(name), test_func)
 
- 
 class CellNotebooks(NotebookTools,unittest.TestCase):
     """Unit tests for documentation notebooks"""
 
-    path = '.' # Path to notebooks to be tested
-
+    path = 'CElegansNeuroML' # Path to notebooks to be tested
+    @unittest.skip('skip')
     def test_muscle_model(self):
         self.do_notebook('Muscle-Model')
-    
