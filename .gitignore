@@ -1,7 +1,10 @@
 *.dat
 __pycache__
+*.pyc
 .ipynb_checkpoints
 *-Copy*.ipynb
 *.pdf
 *.egg-info/
 *.egg
+owtests/ChannelWorm/GeneratedFiles/*.py
+owtests/CElegansNeuroML/GeneratedFiles/*.py
