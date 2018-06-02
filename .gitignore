@@ -1,3 +1,4 @@
+*.pyc
 *.dat
 __pycache__
 .ipynb_checkpoints
@@ -5,3 +6,25 @@ __pycache__
 *.pdf
 *.egg-info/
 *.egg
+
+# Files generated when tests are run
+EGL-19a_CAEEL.py
+EGL-2_CAEEL.py
+EGL-36_CAEEL.py
+EXP-2_CAEEL.py
+SHK-1a_CAEEL.py
+SHL-1_CAEEL.py
+SLO-1a_CAEEL.py
+SLO-2b_CAEEL.py
+SLO-2c_CAEEL.py
+TWK18_CAEEL.py
+kqt-1_CAEEL.py
+kqt-3_CAEEL.py
+Muscle-Model.py
+EGL-19_IV.py
+
+# Jupyter notebooks generated on accident
+Untitled.ipynb
+
+# XML Files
+*.xml
