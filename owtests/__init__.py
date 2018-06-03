@@ -20,66 +20,30 @@ if not os.path.isdir(OW_HOME):
     raise FileNotFoundError(msg)
 CW_HOME = os.path.join(OW_HOME,'ChannelWorm')
 
+channels = open(os.path.join(OW_HOME,'tests/owtests/ChannelWorm/ion_channel_list.txt')).read().split()
+
 class ChannelNotebooks(NotebookTools,unittest.TestCase):
     """Unit tests for documentation notebooks"""
+    longMessage = True
+    path = 'ChannelWorm' # Path to notebooks to be tested
+    gen_dir_name = 'GeneratedFiles'
+    gen_file_level = 2
 
-    path = 'ChannelWorm'
+def make_test_function(channel_name):
+    def test(self):
+        self.do_notebook([channel_name,channel_name])
+    return test
 
-    # @unittest.skip("")
-    # This is the original EGL-19 test that the others are based on
-    def test_egl19a_iv(self):
-        self.do_notebook('EGL-19a_CAEEL/EGL-19a_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_egl2_CAEEL(self):
-        self.do_notebook('EGL-2_CAEEL/EGL-2_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_egl36_CAEEL(self):
-        self.do_notebook('EGL-36_CAEEL/EGL-36_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_exp2_CAEEL(self):
-        self.do_notebook('EXP-2_CAEEL/EXP-2_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_kqt1_CAEEL(self):
-        self.do_notebook('kqt-1_CAEEL/kqt-1_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_kqt3_CAEEL(self):
-        self.do_notebook('kqt-3_CAEEL/kqt-3_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_shk1a_CAEEL(self):
-        self.do_notebook('SHK-1a_CAEEL/SHK-1a_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_shl1_CAEEL(self):
-        self.do_notebook('SHL-1_CAEEL/SHL-1_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_slo1a_CAEEL(self):
-        self.do_notebook('SLO-1a_CAEEL/SLO-1a_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_slo2b_CAEEL(self):
-        self.do_notebook('SLO-2b_CAEEL/SLO-2b_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_slo2c_CAEEL(self):
-        self.do_notebook('SLO-2c_CAEEL/SLO-2c_CAEEL')
-
-    @unittest.skip("These are dummy tests.  Need to be filed out later")
-    def test_twk18_CAEEL(self):
-        self.do_notebook('TWK18_CAEEL/TWK18_CAEEL')
+for name in channels:
+    test_func = make_test_function(name)
+    setattr(ChannelNotebooks, 'test_{0}'.format(name), test_func)
 
 class CellNotebooks(NotebookTools,unittest.TestCase):
     """Unit tests for documentation notebooks"""
 
-    # Path to testing notebooks
-    path = 'CElegansNeuroML'
-
-    # @unittest.skip("for development purposes")
+    path = 'CElegansNeuroML' # Path to notebooks to be tested
+    gen_dir_name = 'GeneratedFiles'
+    gen_file_level = 2
+    # @unittest.skip('skip this test')
     def test_muscle_model(self):
         self.do_notebook('Muscle-Model')

@@ -1,15 +1,12 @@
-# Currently tests are specified one by one, but eventually it 
-# may make sense to auto-generate them from this file
-
-EGL-19a_CAEEL/
-EGL-2_CAEEL/
-EGL-36_CAEEL/
-EXP-2_CAEEL/
-SHK-1a_CAEEL/
-SHL-1_CAEEL/
-SLO-1a_CAEEL/
-SLO-2b_CAEEL/
-SLO-2c_CAEEL/
-TWK18_CAEEL/
-kqt-1_CAEEL/
-kqt-3_CAEEL/
+EGL-19a_CAEEL
+EGL-2_CAEEL
+EGL-36_CAEEL
+EXP-2_CAEEL
+SHK-1a_CAEEL
+SHL-1_CAEEL
+SLO-1a_CAEEL
+SLO-2b_CAEEL
+SLO-2c_CAEEL
+TWK18_CAEEL
+kqt-1_CAEEL
+kqt-3_CAEEL
